@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <!-- Start cookieyes banner --> <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/8e12f1f6a93c31ea65a1052f/script.js" defer></script> <!-- End cookieyes banner -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Marktplatz - Startseite</title>
+    <meta name="description" content="Online-Marktplatz mit besten Angeboten">
+    <meta name="keywords" content="ecommerce, online shopping, elektronik, mode">
+    <meta name="cjdropshipping-key" content="6b4d5d2c435d4aceb4473c792e94e5f5">
+    
+    <!-- Resource Preloading -->
+    <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="//cdn-cookieyes.com">
+    <link rel="preload" href="styles.css?v=14.0" as="style">
+    <link rel="modulepreload" href="app.js?v=19.0">
+    
+    <!-- Stylesheets -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="styles.css?v=14.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"></noscript>
+    <script>window.CJ_DROPSHIPPING_KEY='6b4d5d2c435d4aceb4473c792e94e5f5';</script>
+    
+    <style>
+        /* KOMPLETT NEUE SCROLLBAR LÖSUNG */
+        .product-scroll-container {
+            position: relative;
+        }
+        
+        /* Neue graue Spur - GANZ LINKS */
+        .product-scroll-container .custom-scrollbar-track {
+            position: absolute;
+            bottom: 12px;
+            left: 0px;
+            right: 110px;
+            height: 6px;
+            background: #f0f0f0;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        /* Hover-Effekt für die graue Spur */
+        .product-scroll-container .custom-scrollbar-track:hover,
+        .product-scroll-container .custom-scrollbar-track:active {
+            height: 8px;
+            bottom: 11px;
+            background: #e0e0e0;
+        }
+        
+        /* Neue schwarze Scrollbar - GANZ LINKS */
+        .product-scroll-container .custom-scrollbar-thumb {
+            position: absolute;
+            bottom: 12px;
+            left: 0px;
+            width: 100px;
+            height: 6px;
+            background: #000000;
+            border-radius: 3px;
+            z-index: 2;
+            transition: all 0.2s ease;
+            cursor: grab;
+        }
+        
+        /* Hover-Effekt für den schwarzen Thumb */
+        .product-scroll-container .custom-scrollbar-thumb:hover {
+            height: 8px;
+            bottom: 11px;
+            background: #333333;
+            cursor: grab;
+        }
+        
+        /* Active/Dragging-Effekt für den schwarzen Thumb */
+        .product-scroll-container .custom-scrollbar-thumb:active,
+        .product-scroll-container .custom-scrollbar-thumb.dragging {
+            cursor: grabbing;
+            background: #555555;
+            transform: scale(1.05);
+        }
+        
+        /* Größerer Klickbereich für bessere Usability */
+        .product-scroll-container .custom-scrollbar-track::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -5px;
+            right: -5px;
+            bottom: -10px;
+            z-index: 1;
+        }
+        
+        .product-scroll-container .custom-scrollbar-thumb::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -5px;
+            right: -5px;
+            bottom: -10px;
+            z-index: 3;
+        }
+        
+        /* MOBILE TOUCH-OPTIMIERUNGEN FÜR SCROLLBAR */
+        @media (max-width: 768px) {
+            .product-scroll-container .custom-scrollbar-track {
+                height: 8px !important;
+                bottom: 10px;
+                touch-action: manipulation;
+                -webkit-tap-highlight-color: transparent;
+            }
+            
+            .product-scroll-container .custom-scrollbar-thumb {
+                height: 8px !important;
+                bottom: 10px;
+                min-width: 60px;
+                touch-action: manipulation;
+                -webkit-tap-highlight-color: transparent;
+            }
+            
+            .product-scroll-container .custom-scrollbar-thumb:active {
+                height: 10px !important;
+                bottom: 9px;
+                transform: scale(1.1);
+            }
+            
+            /* Größerer Touch-Bereich für Mobile */
+            .product-scroll-container .custom-scrollbar-track::before {
+                top: -15px;
+                bottom: -15px;
+                left: -10px;
+                right: -10px;
+            }
+            
+            .product-scroll-container .custom-scrollbar-thumb::before {
+                top: -15px;
+                bottom: -15px;
+                left: -10px;
+                right: -10px;
+            }
+        }
+
+        /* ENTFERNE GRID PADDING */
+        .product-scroll-grid {
+            padding: 0 20px 60px 0px !important;
+        }
+        
+        /* Verstecke die alten ::before und ::after */
+        .product-scroll-container::before,
+        .product-scroll-container::after {
+            display: none !important;
+        }
+        
+        /* Simple animations matching product 4 exactly */
+        .success-animation {
+            animation: success-animation 1.2s ease-in-out;
+        }
+        .cart-icon-pulse {
+            animation: cart-icon-pulse 1s ease-in-out;
+        }
+        .cart-rainbow-bounce {
+            animation: cart-rainbow-bounce 1.2s ease-in-out;
+        }
+        .heart-pulse {
+            animation: heart-pulse 1s ease-in-out;
+        }
+        
+        @keyframes success-animation {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        @keyframes cart-icon-pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        @keyframes cart-rainbow-bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        @keyframes heart-pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Notification slide animations */
+        @keyframes slideInRight {
+            0% {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideOutRight {
+            0% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+        }
+        
+        .notification-slide-in {
+            animation: slideInRight 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .notification-slide-out {
+            animation: slideOutRight 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+    </style>
+</head>
+<body>
+    <!-- Lumière Design Header -->
+    <!-- Announcement Bar -->
+    <div class="announcement-bar">
+      <div class="announcement-slider">
+        <div class="announcement-item">Über 10.000 zufriedene Kunden</div>
+        <div class="announcement-item">Über 3.500+ Bewertungen</div>
+        <div class="announcement-item">Gratis Versand ab 50€</div>
+        <div class="announcement-item">Über 10.000 zufriedene Kunden</div>
+        <div class="announcement-item">Über 3.500+ Bewertungen</div>
+        <div class="announcement-item">Gratis Versand ab 50€</div>
+      </div>
+    </div>
+
+    <!-- Simplified Navigation like in image -->
+    <nav class="simple-nav">
+      <div class="container">
+        <div class="nav-content-simple">
+          <!-- Logo -->
+          <div class="nav-logo-simple">
+            <a href="#" onclick="window.location.reload(); return false;">Marktplatz</a>
+            <span class="nav-tagline"></span>
+          </div>
+
+          <!-- Search Icon Only -->
+          <div class="search-icon-center">
+            <button class="search-icon-btn" type="button" aria-label="Suchen" id="fullscreenSearchBtn">
+              <i class="bi bi-search"></i>
+            </button>
+          </div>
+
+          <!-- Right Side Icons -->
+          <div class="nav-actions-simple">
+            <a href="wishlist.html" id="wishlistButton" class="nav-icon-simple position-relative">
+              <i class="bi bi-heart"></i>
+              <span id="wishlistCounter" class="cart-counter" style="display: none;">0</span>
+            </a>
+            <div class="position-relative">
+              <a href="#" id="cartButton" class="nav-icon-simple cart-link">
+                <i class="bi bi-cart3"></i>
+                <span>Warenkorb</span>
+                <span id="cartCounter" class="cart-counter">0</span>
+              </a>
+              <!-- Cart Dropdown -->
+              <div class="cart-dropdown" id="cartDropdown">
+        <div class="cart-dropdown-header">
+          <h6 class="mb-0">Warenkorb</h6>
+          <button class="btn-close" id="closeCartDropdown">&times;</button>
+        </div>
+        <div class="cart-dropdown-body" id="cartDropdownBody">
+          <div class="empty-cart text-center py-4" id="emptyCartMessage">
+            <i class="bi bi-cart-x fs-1 text-muted"></i>
+            <p class="text-muted mt-2">Ihr Warenkorb ist leer</p>
+          </div>
+        </div>
+        <div class="cart-dropdown-footer" id="cartDropdownFooter" style="display: block !important; visibility: visible !important; opacity: 1 !important; position: relative !important; z-index: 999 !important; background: white !important; padding: 20px !important; width: 100% !important; box-sizing: border-box !important;">
+          <div class="d-flex justify-content-between align-items-center mb-3" style="width: 100% !important;">
+            <strong>Gesamt: €<span id="cartTotal">0.00</span></strong>
+          </div>
+          <div class="d-grid gap-2" style="width: 100% !important; display: grid !important; grid-template-rows: auto auto !important; gap: 12px !important;">
+            <a href="cart.html" class="btn btn-primary checkout-btn" style="display: flex !important; align-items: center !important; justify-content: center !important; visibility: visible !important; opacity: 1 !important; width: 100% !important; height: 48px !important; text-align: center !important; text-decoration: none !important; color: white !important; background: linear-gradient(135deg, #667eea, #764ba2) !important; border: none !important; border-radius: 12px !important; font-weight: 600 !important; font-size: 16px !important; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4) !important; transition: all 0.3s ease !important;">
+              <i class="bi bi-credit-card" style="margin-right: 8px !important;"></i>Zur Kasse
+            </a>
+            <button class="btn btn-outline-danger clear-cart-btn" id="clearCart" style="display: flex !important; align-items: center !important; justify-content: center !important; visibility: visible !important; opacity: 1 !important; width: 100% !important; height: 48px !important; border: 2px solid #dc3545 !important; color: #dc3545 !important; background: white !important; border-radius: 12px !important; cursor: pointer !important; font-size: 16px !important; font-weight: 600 !important; transition: all 0.3s ease !important;">
+              <i class="bi bi-trash" style="font-size: 16px !important; margin-right: 8px !important; display: inline-block !important; visibility: visible !important;"></i>Löschen
+            </button>
+          </div>
+        </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Fullscreen Search Overlay -->
+    <div class="fullscreen-search-overlay" id="fullscreenSearchOverlay">
+      <div class="fullscreen-search-container">
+        <!-- Search Header -->
+        <div class="fullscreen-search-header">
+          <button class="close-search-btn" id="closeSearchBtn">
+            <i class="bi bi-x"></i>
+          </button>
+        </div>
+        
+        <!-- Lumière Category Tabs -->
+        <div class="lumiere-category-tabs">
+          <a href="#" class="lumiere-category-tab active" data-category="alle" onclick="searchCategoryClick(this, 'alle'); return false;">
+            <i class="bi bi-grid-3x3-gap"></i>
+            <span>ALLE</span>
+          </a>
+          <a href="#" class="lumiere-category-tab" data-category="Technik/Gadgets" onclick="searchCategoryClick(this, 'Technik/Gadgets'); return false;">
+            <i class="bi bi-cpu"></i>
+            <span>TECHNIK</span>
+          </a>
+          <a href="#" class="lumiere-category-tab" data-category="Beleuchtung" onclick="searchCategoryClick(this, 'Beleuchtung'); return false;">
+            <i class="bi bi-lightbulb"></i>
+            <span>LICHT</span>
+          </a>
+          <a href="#" class="lumiere-category-tab" data-category="Körperpflege/Wellness" onclick="searchCategoryClick(this, 'Körperpflege/Wellness'); return false;">
+            <i class="bi bi-heart-pulse"></i>
+            <span>WELLNESS</span>
+          </a>
+          <a href="#" class="lumiere-category-tab" data-category="Haushalt und Küche" onclick="searchCategoryClick(this, 'Haushalt und Küche'); return false;">
+            <i class="bi bi-house"></i>
+            <span>KÜCHE</span>
+          </a>
+        </div>
+        
+        <!-- Search Input -->
+        <div class="fullscreen-search-input-container">
+          <div class="search-input-wrapper">
+            <i class="bi bi-search search-input-icon"></i>
+            <input type="text" class="fullscreen-search-input" placeholder="Wonach suchst du?" id="fullscreenSearchInput" oninput="testSearchFunction(this.value)" onkeyup="testSearchFunction(this.value)">
+          </div>
+        </div>
+        
+        <!-- Search Results -->
+        <div class="search-results" id="searchResults" style="display: none;">
+          <h3 class="search-section-title">Suchergebnisse</h3>
+          <div class="search-results-grid" id="searchResultsGrid">
+            <!-- Results will be populated here -->
+          </div>
+        </div>
+        
+        <!-- All Products Section -->
+        <div class="search-all-products">
+          <h3 class="search-section-title">VIELLEICHT INTERESSIERT SIE DAS FOLGENDE</h3>
+          <div class="search-all-products-grid" id="searchAllProductsGrid">
+            <!-- All products will be loaded here -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Lumière Style Hero Section -->
+        <section class="hero-section">
+            <div class="container">
+                <h1 class="section-heading">Moderne Produkte für dein Zuhause</h1>
+                <p class="section-subheading">Jetzt direkt bestellen! ✓ 1-3 Tage Lieferzeit ✓ Über 10.000 Kunden ✓ 4,8 Sterne Bewertung</p>
+            </div>
+        </section>
+
+        <!-- Lumière Adapted Top Banner -->
+        <section class="lumiere-top-banner">
+            <div class="container">
+                <div class="lumiere-hero-main">
+                    <div class="lumiere-badge-circle">10</div>
+                    <div class="lumiere-hero-text">
+                        <h2>Smart Home & Sicherheit Angebote</h2>
+                        <p>Homematic IP Neuheiten & Highlights für die produkte</p>
+                    </div>
+                    <div class="lumiere-hero-products">
+                        <img src="produkt bilder/ZigBee Smart DIY Motorisierte Rollos.jpeg" alt="ZigBee Smart DIY Motorisierte Rollos" class="lumiere-hero-img">
+                        <img src="produkt bilder/LED Motion Sensor Licht Drahtlose.jpeg" alt="LED Motion Sensor Licht Drahtlose" class="lumiere-hero-img">
+                        <img src="produkt bilder/Nachtlichter mit Bewegungsmelder.jpeg" alt="Nachtlichter mit Bewegungsmelder" class="lumiere-hero-img">
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Section - Lumière Style with Swipe -->
+        <section class="products-section">
+            <div class="container">
+                <!-- Bestseller Section -->
+                <div class="product-category-section">
+                    <div class="category-header">
+                        <h2 class="category-title">Unsere Bestseller</h2>
+                        <p class="category-subtitle">Schau dir die beliebtesten Produkte unserer Kunden an.</p>
+                    </div>
+                    <div class="product-scroll-container">
+                        <button class="scroll-arrow scroll-arrow-left" onclick="scrollBestsellers('left')">
+                            <i class="bi bi-chevron-left"></i>
+                        </button>
+                        <button class="scroll-arrow scroll-arrow-right" onclick="scrollBestsellers('right')">
+                            <i class="bi bi-chevron-right"></i>
+                        </button>
+                        <div class="product-scroll-grid" id="bestsellerGrid">
+                            <!-- Bestseller products will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lumière Category Navigation -->
+                <section class="lumiere-category-nav">
+                    <div class="container">
+                        <div class="lumiere-category-tabs">
+                            <a href="#" class="lumiere-category-tab active" data-category="alle">
+                                <i class="bi bi-grid-3x3-gap"></i>
+                                <span>Alle Kategorien</span>
+                            </a>
+                            <a href="#" class="lumiere-category-tab" data-category="Technik/Gadgets">
+                                <i class="bi bi-cpu"></i>
+                                <span>Technik/Gadgets</span>
+                            </a>
+                            <a href="#" class="lumiere-category-tab" data-category="Beleuchtung">
+                                <i class="bi bi-lightbulb"></i>
+                                <span>Beleuchtung</span>
+                            </a>
+                            <a href="#" class="lumiere-category-tab" data-category="Körperpflege/Wellness">
+                                <i class="bi bi-heart-pulse"></i>
+                                <span>Körperpflege/Wellness</span>
+                            </a>
+                            <a href="#" class="lumiere-category-tab" data-category="Haushalt und Küche">
+                                <i class="bi bi-house"></i>
+                                <span>Haushalt und Küche</span>
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Alle Produkte Section Header -->
+                <div class="category-header" style="margin-top: 3rem; margin-bottom: 2rem;">
+                    <h2 class="category-title">Alle Produkte</h2>
+                    <p class="category-subtitle">Entdecken Sie unser gesamtes Sortiment nach Kategorien.</p>
+                </div>
+
+                <!-- Technik/Gadgets Section -->
+                <div class="product-category-section">
+                    <div class="category-header">
+                        <h2 class="category-title">Technik/Gadgets</h2>
+                        <p class="category-subtitle">Innovative Technologie für den Alltag.</p>
+                    </div>
+                    <div class="product-scroll-container">
+                        <button class="scroll-arrow scroll-arrow-left" onclick="scrollCategory('technikGrid', 'left')">
+                            <i class="bi bi-chevron-left"></i>
+                        </button>
+                        <button class="scroll-arrow scroll-arrow-right" onclick="scrollCategory('technikGrid', 'right')">
+                            <i class="bi bi-chevron-right"></i>
+                        </button>
+                        <div class="product-scroll-grid" id="technikGrid">
+                            <!-- Technik products will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Beleuchtung Section -->
+                <div class="product-category-section">
+                    <div class="category-header">
+                        <h2 class="category-title">Beleuchtung</h2>
+                        <p class="category-subtitle">Stilvolle Beleuchtungslösungen für Ihr Zuhause.</p>
+                    </div>
+                    <div class="product-scroll-container">
+                        <button class="scroll-arrow scroll-arrow-left" onclick="scrollCategory('beleuchtungGrid', 'left')">
+                            <i class="bi bi-chevron-left"></i>
+                        </button>
+                        <button class="scroll-arrow scroll-arrow-right" onclick="scrollCategory('beleuchtungGrid', 'right')">
+                            <i class="bi bi-chevron-right"></i>
+                        </button>
+                        <div class="product-scroll-grid" id="beleuchtungGrid">
+                            <!-- Beleuchtung products will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Haushalt und Küche Section -->
+                <div class="product-category-section">
+                    <div class="category-header">
+                        <h2 class="category-title">Haushalt und Küche</h2>
+                        <p class="category-subtitle">Praktische Helfer für Haushalt und Küche.</p>
+                    </div>
+                    <div class="product-scroll-container">
+                        <button class="scroll-arrow scroll-arrow-left" onclick="scrollCategory('haushaltGrid', 'left')">
+                            <i class="bi bi-chevron-left"></i>
+                        </button>
+                        <button class="scroll-arrow scroll-arrow-right" onclick="scrollCategory('haushaltGrid', 'right')">
+                            <i class="bi bi-chevron-right"></i>
+                        </button>
+                        <div class="product-scroll-grid" id="haushaltGrid">
+                            <!-- Haushalt products will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Körperpflege/Wellness Section -->
+                <div class="product-category-section">
+                    <div class="category-header">
+                        <h2 class="category-title">Körperpflege/Wellness</h2>
+                        <p class="category-subtitle">Wellness und Pflege für Ihr Wohlbefinden.</p>
+                    </div>
+                    <div class="product-scroll-container">
+                        <button class="scroll-arrow scroll-arrow-left" onclick="scrollCategory('wellnessGrid', 'left')">
+                            <i class="bi bi-chevron-left"></i>
+                        </button>
+                        <button class="scroll-arrow scroll-arrow-right" onclick="scrollCategory('wellnessGrid', 'right')">
+                            <i class="bi bi-chevron-right"></i>
+                        </button>
+                        <div class="product-scroll-grid" id="wellnessGrid">
+                            <!-- Wellness products will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Product Template - Lumière Style -->
+        <template id="productTemplate">
+            <div class="lumiere-product-card">
+                <div class="lumiere-image-container">
+                    <img src="produkt bilder/ware.png" alt="" class="lumiere-product-image" loading="lazy">
+                    <button class="lumiere-wishlist-btn" aria-label="Zur Wunschliste hinzufügen">
+                        <i class="bi bi-heart"></i>
+                    </button>
+                </div>
+                <div class="lumiere-card-content">
+                    <h3 class="lumiere-product-title"></h3>
+                    <p class="lumiere-product-description"></p>
+                    <div class="lumiere-price-section">
+                        <span class="lumiere-price"></span>
+                    </div>
+                    <button class="lumiere-add-to-cart-btn">
+                        In den Warenkorb
+                    </button>
+                </div>
+            </div>
+        </template>
+</main>
+
+    <!-- Footer -->
+    <footer class="lumiere-footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <h5 class="mb-3">Über uns</h5>
+                    <p class="text-muted">Ihr vertrauenswürdiger Online-Marktplatz seit 2024.</p>
+                    <div class="social-icons">
+                        <a href="#" class="text-white me-3" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="text-white me-3" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="text-white" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <h5 class="mb-3">Einkaufen</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="infos/angebote.html" class="text-white text-decoration-none">Angebote</a></li>
+                        <li><a href="infos/neue-produkte.html" class="text-white text-decoration-none">Neue Produkte</a></li>
+                        <li><a href="infos/kategorien.html" class="text-white text-decoration-none">Kategorien</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2">
+                    <h5 class="mb-3">Support</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="infos/kontakt.html" class="text-white text-decoration-none">Kontakt</a></li>
+                        <li><a href="infos/versand.html" class="text-white text-decoration-none">Versand</a></li>
+                        <li><a href="infos/retouren.html" class="text-white text-decoration-none">Retouren</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center py-4 text-muted">
+                © 2024 Marktplatz - Alle Rechte vorbehalten
+            </div>
+        </div>
+    </footer>
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script src="app.js?v=19.0" defer></script>
+    
+    <!-- Nach oben Button -->
+    <button id="scrollToTopBtn" aria-label="Nach oben" style="position:fixed; bottom:100px; left:30px; z-index:9998; width:56px; height:56px; border-radius:50%; background:linear-gradient(135deg,#667eea,#764ba2); color:#fff; border:none; box-shadow:0 4px 16px rgba(102,126,234,0.18); font-size:2rem; display:flex; align-items:center; justify-content:center; transition:background 0.2s, box-shadow 0.2s; cursor:pointer;">
+      <span style="display:flex; align-items:center; justify-content:center; width:100%; height:100%;"><i class="bi bi-arrow-up"></i></span>
+    </button>
+    <script>
+      const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          scrollToTopBtn.classList.add('show');
+        } else {
+          scrollToTopBtn.classList.remove('show');
+        }
+      });
+      scrollToTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    </script>
+
+<!-- Hilfe-Button und Panel (ultra-modernes Design) -->
+<div id="hilfeButton" aria-label="Hilfe öffnen" style="display: flex !important; visibility: visible !important; opacity: 1 !important;">
+  <!-- Icon wird jetzt über CSS ::after pseudo-element angezeigt -->
+</div>
+<div id="hilfePanel" class="hilfe-panel">
+  <!-- Lila Header für Hauptseite -->
+  <div class="hilfe-panel-header" id="hilfePanelHeader">
+    <i class="bi bi-question-circle"></i>
+    <span>Hilfe & Support</span>
+    <button id="hilfePanelClose" aria-label="Hilfe schließen">&times;</button>
+  </div>
+  
+  <!-- Chatbot Interface -->
+  <div id="chatbotInterface" class="chatbot-interface">
+    <div class="chatbot-header">
+      <i class="bi bi-arrow-left"></i>
+      <span>Support </span>
+    </div>
+    
+    <div class="chatbot-messages" id="chatbotMessages">
+      <!-- Messages will be added here dynamically -->
+    </div>
+    
+    <!-- Feedback Buttons (werden dynamisch hinzugefügt) -->
+    <div id="feedbackButtons" class="feedback-buttons" style="display: none;">
+      <button class="feedback-btn helpful-btn">
+        <i class="bi bi-hand-thumbs-up"></i>
+        Ja, das war hilfreich
+      </button>
+      <button class="feedback-btn not-helpful-btn">
+        <i class="bi bi-hand-thumbs-down"></i>
+        Nein, das war nicht hilfreich
+      </button>
+    </div>
+  </div>
+  
+  <!-- Hilfe-Themen (wird ausgeblendet wenn Chatbot aktiv ist) -->
+  <div id="hilfeThemen" class="hilfe-themen-modern">
+
+    <button class="hilfe-thema-btn" data-topic="bestellung">Bestellung stornieren</button>
+    <button class="hilfe-thema-btn" data-topic="versand">Versand & Lieferzeiten</button>
+    <button class="hilfe-thema-btn" data-topic="rabattcodes">Mehrere Rabattcodes</button>
+    <button class="hilfe-thema-btn" data-topic="kaeuferschutz">Was ist Käuferschutz?</button>
+    <button class="hilfe-thema-btn" data-topic="adresse">Adresse ändern</button>
+    <button class="hilfe-thema-btn" data-topic="zahlung">Zahlungsmethoden</button>
+    <button class="hilfe-thema-btn" data-topic="konto">Konto & Profil</button>
+  </div>
+</div>
+    
+    <!-- Direct Search Button Handler -->
+    <script>
+        // Immediate search button handler
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🔍 DOM loaded, setting up search button...');
+            
+            function setupSearchButton() {
+                const searchBtn = document.getElementById('fullscreenSearchBtn');
+                const searchOverlay = document.getElementById('fullscreenSearchOverlay');
+                
+                console.log('🔍 Elements found:', {
+                    searchBtn: !!searchBtn,
+                    searchOverlay: !!searchOverlay
+                });
+                
+                if (searchBtn && searchOverlay) {
+                    // Remove any existing listeners
+                    searchBtn.onclick = null;
+                    
+                    // Add click handler
+                    searchBtn.addEventListener('click', function(e) {
+                        console.log('🔍 DIRECT: Search button clicked!');
+                        e.preventDefault();
+                        e.stopPropagation();
+                        
+                        // Show overlay with slide animation
+                        searchOverlay.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                        
+                        // Focus search input and load products (nur für Desktop)
+                        setTimeout(() => {
+                            const searchInput = document.getElementById('fullscreenSearchInput');
+                            if (searchInput && window.innerWidth > 768) {
+                                // Nur auf Desktop fokussieren, nicht auf Mobile
+                                searchInput.focus();
+                            }
+                            
+                            // Load products immediately
+                            if (typeof loadAllProducts === 'function') {
+                                loadAllProducts();
+                            } else {
+                                // Backup: Try again after a short delay
+                                setTimeout(() => {
+                                    if (typeof loadAllProducts === 'function') {
+                                        loadAllProducts();
+                                    } else {
+                                        console.log('⚠️ loadAllProducts function not available');
+                                    }
+                                }, 1000);
+                            }
+                        }, 400);
+                    });
+                    
+                    // Close button handler
+                    const closeBtn = document.getElementById('closeSearchBtn');
+                    if (closeBtn) {
+                        closeBtn.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            searchOverlay.classList.remove('active');
+                            document.body.style.overflow = '';
+                        });
+                    }
+                    
+                    // ESC key handler
+                    document.addEventListener('keydown', function(e) {
+                        if (e.key === 'Escape' && searchOverlay.classList.contains('active')) {
+                            searchOverlay.classList.remove('active');
+                            document.body.style.overflow = '';
+                        }
+                    });
+                    
+                    console.log('✅ DIRECT: Search button setup complete!');
+                } else {
+                    console.log('⏳ DIRECT: Elements not ready, retrying...');
+                    setTimeout(setupSearchButton, 100);
+                }
+            }
+            
+            setupSearchButton();
+        });
+    </script>
+
+<script>
+  // Debug: Prüfe ob Elemente gefunden werden
+  console.log('Script lädt...');
+  
+  const hilfeButton = document.getElementById('hilfeButton');
+  const hilfePanel = document.getElementById('hilfePanel');
+  const hilfePanelClose = document.getElementById('hilfePanelClose');
+  const hilfePanelHeader = document.getElementById('hilfePanelHeader');
+  const chatbotInterface = document.getElementById('chatbotInterface');
+  const hilfeThemen = document.getElementById('hilfeThemen');
+  const chatbotMessages = document.getElementById('chatbotMessages');
+  const backButton = document.querySelector('.chatbot-header .bi-arrow-left');
+  
+
+  
+  console.log('hilfeButton:', hilfeButton);
+  console.log('hilfePanel:', hilfePanel);
+  
+  // Hilfe-Button sofort sichtbar machen
+  if (hilfeButton) {
+    hilfeButton.style.display = 'flex';
+    hilfeButton.style.visibility = 'visible';
+    hilfeButton.style.opacity = '1';
+    console.log('Hilfe-Button wurde sichtbar gemacht');
+  }
+  
+  // Debug: Teste Panel-Sichtbarkeit
+  if (hilfePanel) {
+    console.log('Initial hilfePanel display:', window.getComputedStyle(hilfePanel).display);
+    console.log('Initial hilfePanel visibility:', window.getComputedStyle(hilfePanel).visibility);
+    console.log('Initial hilfePanel opacity:', window.getComputedStyle(hilfePanel).opacity);
+  }
+  
+  // Function to check if device is mobile
+  function isMobileDevice() {
+    return window.innerWidth <= 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  }
+
+  // Event Listener für Hilfe-Button
+  if (hilfeButton) {
+    hilfeButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      console.log('Hilfe-Button geklickt!');
+      
+      // Prüfe aktuellen Zustand
+      const isOpen = hilfePanel.classList.contains('offen');
+      console.log('Panel ist offen:', isOpen);
+      
+      if (isOpen) {
+        // Panel schließen
+        hilfePanel.classList.remove('offen');
+        document.body.classList.remove('help-panel-open');
+        hilfePanel.style.display = 'none';
+        
+        // Restore body styles (especially important for mobile)
+        document.body.style.overflow = '';
+        document.body.style.height = '';
+        
+        hideChatbot();
+        console.log('Panel geschlossen');
+      } else {
+        // Panel öffnen
+        hilfePanel.classList.add('offen');
+        document.body.classList.add('help-panel-open');
+        console.log('Panel geöffnet');
+        
+        // Force visibility
+        hilfePanel.style.display = 'flex';
+        hilfePanel.style.visibility = 'visible';
+        hilfePanel.style.opacity = '1';
+        hilfePanel.style.zIndex = '2147483647';
+        hilfePanel.style.position = 'fixed';
+        
+        // Check if mobile device for fullscreen behavior
+        if (isMobileDevice()) {
+          // Mobile: Fullscreen styling
+          hilfePanel.style.top = '0';
+          hilfePanel.style.left = '0';
+          hilfePanel.style.right = '0';
+          hilfePanel.style.bottom = '0';
+          hilfePanel.style.transform = 'none';
+          hilfePanel.style.width = '100vw';
+          hilfePanel.style.height = '100vh';
+          hilfePanel.style.maxWidth = '100vw';
+          hilfePanel.style.maxHeight = '100vh';
+          hilfePanel.style.minHeight = '100vh';
+          hilfePanel.style.borderRadius = '0';
+          hilfePanel.style.border = 'none';
+          // Prevent scrolling on body
+          document.body.style.overflow = 'hidden';
+          document.body.style.height = '100vh';
+        } else {
+          // Desktop: Normal panel styling
+          hilfePanel.style.top = '50%';
+          hilfePanel.style.right = '20px';
+          hilfePanel.style.left = 'auto';
+          hilfePanel.style.bottom = 'auto';
+          hilfePanel.style.transform = 'translateY(-50%) scale(1)';
+          hilfePanel.style.width = '440px';
+          hilfePanel.style.maxWidth = '95vw';
+          hilfePanel.style.height = 'auto';
+          hilfePanel.style.minHeight = '500px';
+          hilfePanel.style.maxHeight = '650px';
+          hilfePanel.style.borderRadius = '28px';
+        }
+      }
+    });
+  } else {
+    console.error('hilfeButton nicht gefunden!');
+  }
+  
+  // Vorgefertigte Antworten für verschiedene Themen
+  const topicResponses = {
+    shortcuts: {
+      question: "🎹 Keyboard Shortcuts",
+      answer: "Nutzen Sie diese praktischen Tastenkombinationen für eine schnellere Navigation:<br><br><strong>Navigation:</strong><br>• H - Zur Wunschliste<br>• W - Warenkorb öffnen/schließen<br>• ESC - Schließen/Zurück<br><br><strong>Kategorien:</strong><br>• 1-5 - Produktkategorien wechseln<br><br><strong>Produkte:</strong><br>• Strg+A - Gehövertes Produkt zum Warenkorb<br>• Strg+L - Gehövertes Produkt zur Wunschliste<br><br><strong>Hilfe:</strong><br>• F oder ? - Hilfe-Panel öffnen<br><br>Alle anderen Tasten öffnen automatisch die Suchleiste!",
+      additionalInfo: "Drücken Sie F oder ? um das Hilfe-Panel zu öffnen. Die Shortcuts funktionieren nicht in Eingabefeldern."
+    },
+    bestellung: {
+      question: "Bestellung stornieren",
+      answer: "Sie können Ihre Bestellung innerhalb von 2 Stunden nach der Bestellung stornieren. Gehen Sie zu Ihren Bestellungen und klicken Sie auf 'Stornieren'. Nach 2 Stunden können Bestellungen nur noch über unseren Kundenservice storniert werden.",
+      additionalInfo: "Für Stornierungen nach 2 Stunden kontaktieren Sie uns bitte telefonisch unter 0800-123456 oder per E-Mail an stornierung@marktplatz.de. Bitte haben Sie Ihre Bestellnummer bereit."
+    },
+    versand: {
+      question: "Versand & Lieferzeiten",
+      answer: "Standardversand: 3-5 Werktage. Expressversand: 1-2 Werktage. Kostenloser Versand ab 50€ Bestellwert. Tracking-Informationen erhalten Sie per E-Mail sobald Ihre Bestellung versendet wird.",
+      additionalInfo: "Bei Verzögerungen kontaktieren Sie uns unter 0800-123456 oder versand@marktplatz.de. Wir können Ihnen dann den aktuellen Status Ihrer Bestellung mitteilen und bei Problemen helfen."
+    },
+    rabattcodes: {
+      question: "Mehrere Rabattcodes",
+      answer: "Sie können nur einen Rabattcode pro Bestellung verwenden. Der Code mit dem höchsten Rabatt wird automatisch angewendet. Kombinieren Sie Rabattcodes nicht mit anderen Aktionen.",
+      additionalInfo: "Falls Ihr Rabattcode nicht funktioniert, prüfen Sie bitte das Ablaufdatum und die Bedingungen. Bei Problemen kontaktieren Sie uns unter rabatt@marktplatz.de oder 0800-123456."
+    },
+    kaeuferschutz: {
+      question: "Was ist Käuferschutz?",
+      answer: "Unser Käuferschutz garantiert Ihnen: 30 Tage Rückgaberecht, sichere Zahlung, Käuferschutz durch PayPal/Stripe, und 24/7 Kundenservice. Ihre Daten sind durch SSL-Verschlüsselung geschützt.",
+      additionalInfo: "Bei Problemen mit dem Käuferschutz kontaktieren Sie uns unter sicherheit@marktplatz.de oder 0800-123456. Wir helfen Ihnen gerne weiter und können bei Bedarf auch eine Rückerstattung veranlassen."
+    },
+    adresse: {
+      question: "Adresse ändern",
+      answer: "Wenn Ihre Bestellung weniger als 90 Minuten alt ist, können Sie Ihre Lieferadresse, E-Mail oder andere persönliche Daten aktualisieren.",
+      additionalInfo: "Bei Problemen mit der Adressänderung kontaktieren Sie uns unter adresse@marktplatz.de oder 0800-123456. Wir helfen Ihnen gerne weiter."
+    },
+    zahlung: {
+      question: "Zahlungsmethoden",
+      answer: "Wir akzeptieren: Kreditkarte, PayPal, SEPA-Lastschrift, Klarna (Kauf auf Rechnung), und Apple Pay/Google Pay. Alle Zahlungen sind sicher und verschlüsselt.",
+      additionalInfo: "Bei Zahlungsproblemen kontaktieren Sie uns unter zahlung@marktplatz.de oder 0800-123456. Wir können Ihnen alternative Zahlungsmethoden vorschlagen oder bei technischen Problemen helfen."
+    },
+    konto: {
+      question: "Konto & Profil",
+      answer: "In Ihrem Konto können Sie: Bestellungen verfolgen, Adressen verwalten, Zahlungsmethoden speichern, Wunschlisten erstellen und E-Mail-Benachrichtigungen verwalten.",
+      additionalInfo: "Bei Problemen mit Ihrem Konto oder wenn Sie Ihr Passwort vergessen haben, kontaktieren Sie uns unter konto@marktplatz.de oder 0800-123456. Wir helfen Ihnen gerne weiter."
+    }
+  };
+  
+  // Chatbot-Funktionen
+  function showChatbot() {
+    chatbotInterface.style.display = 'block';
+    hilfeThemen.style.display = 'none';
+    hilfePanelHeader.style.display = 'none'; // Verstecke lila Header
+    
+    // Aktiviere orange Farben für den Chatbot-Header sofort
+    const chatbotHeader = document.querySelector('.chatbot-header');
+    if (chatbotHeader) {
+      chatbotHeader.classList.add('orange-support');
+    }
+    
+    // Füge Willkommensnachricht hinzu (mit orange Klassen wenn aktiv)
+    addWelcomeMessage();
+  }
+  
+  function hideChatbot() {
+    chatbotInterface.style.display = 'none';
+    hilfeThemen.style.display = 'flex';
+    hilfePanelHeader.style.display = 'flex'; // Zeige lila Header wieder
+    chatbotMessages.innerHTML = '';
+    
+    // Deaktiviere orange Support-Farben
+    deactivateOrangeSupport();
+  }
+  
+  function addWelcomeMessage() {
+    const orangeClass = window.orangeSupportActive ? 'orange-support' : '';
+    const welcomeMessage = `
+      <div class="chatbot-message bot-message">
+        <div class="message-content">
+          <div class="bot-avatar ${orangeClass}">
+            <i class="bi bi-headset"></i>
+          </div>
+          <div class="message-text ${orangeClass}">
+            <p>Hallo! Ich bin Ihr Comfort Consultant Support EU. Wie kann ich Ihnen heute helfen?</p>
+            <div class="quick-topics">
+              <button class="quick-topic-btn ${orangeClass}" data-topic="adresse">Adresse ändern</button>
+              <button class="quick-topic-btn ${orangeClass}" data-topic="bestellung">Bestellung stornieren</button>
+              <button class="quick-topic-btn ${orangeClass}" data-topic="versand">Versand & Lieferzeiten</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+    chatbotMessages.innerHTML = welcomeMessage;
+  }
+  
+  function addUserMessage(message) {
+    const orangeClass = window.orangeSupportActive ? 'orange-support' : '';
+    const userMessage = `
+      <div class="chatbot-message user-message">
+        <div class="message-content">
+          <div class="message-text ${orangeClass}">
+            <p>${message}</p>
+          </div>
+        </div>
+      </div>
+    `;
+    chatbotMessages.insertAdjacentHTML('beforeend', userMessage);
+  }
+  
+  function addBotMessage(response, showFeedback = true) {
+    const orangeClass = window.orangeSupportActive ? 'orange-support' : '';
+    const botMessage = `
+      <div class="chatbot-message bot-message">
+        <div class="message-content">
+          <div class="bot-avatar ${orangeClass}">
+            <i class="bi bi-headset"></i>
+          </div>
+          <div class="message-text ${orangeClass}">
+            <p>${response.answer}</p>
+          </div>
+        </div>
+      </div>
+    `;
+    chatbotMessages.insertAdjacentHTML('beforeend', botMessage);
+    
+    if (showFeedback) {
+      showFeedbackButtons(response);
+    }
+  }
+  
+  function addAdditionalInfo(additionalInfo) {
+    const orangeClass = window.orangeSupportActive ? 'orange-support' : '';
+    const additionalMessage = `
+      <div class="chatbot-message bot-message additional-info">
+        <div class="message-content">
+          <div class="bot-avatar ${orangeClass}">
+            <i class="bi bi-info-circle"></i>
+          </div>
+          <div class="message-text ${orangeClass}">
+            <p><strong>Zusätzliche Informationen:</strong></p>
+            <p>${additionalInfo}</p>
+          </div>
+        </div>
+      </div>
+    `;
+    chatbotMessages.insertAdjacentHTML('beforeend', additionalMessage);
+  }
+  
+  function showFeedbackButtons(response) {
+    const feedbackButtons = document.getElementById('feedbackButtons');
+    feedbackButtons.style.display = 'flex';
+    
+    // Event listeners für Feedback-Buttons
+    const helpfulBtn = feedbackButtons.querySelector('.helpful-btn');
+    const notHelpfulBtn = feedbackButtons.querySelector('.not-helpful-btn');
+    
+    // Entferne alte Event Listeners
+    helpfulBtn.replaceWith(helpfulBtn.cloneNode(true));
+    notHelpfulBtn.replaceWith(notHelpfulBtn.cloneNode(true));
+    
+    // Neue Event Listeners
+    const newHelpfulBtn = feedbackButtons.querySelector('.helpful-btn');
+    const newNotHelpfulBtn = feedbackButtons.querySelector('.not-helpful-btn');
+    
+    newHelpfulBtn.addEventListener('click', () => {
+      addFeedbackMessage('Vielen Dank für Ihr Feedback! 👍 Das freut uns zu hören.');
+      hideFeedbackButtons();
+    });
+    
+    newNotHelpfulBtn.addEventListener('click', () => {
+      addFeedbackMessage('Entschuldigung, dass die Antwort nicht hilfreich war. Hier sind weitere Informationen:');
+      addAdditionalInfo(response.additionalInfo);
+      hideFeedbackButtons();
+    });
+  }
+  
+  function hideFeedbackButtons() {
+    const feedbackButtons = document.getElementById('feedbackButtons');
+    feedbackButtons.style.display = 'none';
+  }
+  
+  function addFeedbackMessage(message) {
+    const orangeClass = window.orangeSupportActive ? 'orange-support' : '';
+    const feedbackMessage = `
+      <div class="chatbot-message bot-message feedback-message">
+        <div class="message-content">
+          <div class="bot-avatar ${orangeClass}">
+            <i class="bi bi-headset"></i>
+          </div>
+          <div class="message-text ${orangeClass}">
+            <p>${message}</p>
+          </div>
+        </div>
+      </div>
+    `;
+    chatbotMessages.insertAdjacentHTML('beforeend', feedbackMessage);
+  }
+  
+  function handleTopicClick(topic) {
+    const response = topicResponses[topic];
+    if (response) {
+      addUserMessage(response.question);
+      setTimeout(() => {
+        addBotMessage(response);
+        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+      }, 500);
+    }
+  }
+  
+  function activateOrangeSupport() {
+    // Füge orange Klassen zu den relevanten Elementen hinzu
+    const hilfePanelHeader = document.getElementById('hilfePanelHeader');
+    const chatbotHeader = document.querySelector('.chatbot-header');
+    const messageTexts = document.querySelectorAll('.message-text');
+    const botAvatars = document.querySelectorAll('.bot-avatar');
+    const quickTopicBtns = document.querySelectorAll('.quick-topic-btn');
+    const hilfeThemaBtns = document.querySelectorAll('.hilfe-thema-btn');
+    
+    if (hilfePanelHeader) {
+      hilfePanelHeader.classList.add('orange-support');
+    }
+    if (chatbotHeader) {
+      chatbotHeader.classList.add('orange-support');
+    }
+    
+    // Füge orange Klassen zu allen Nachrichten und Avataren hinzu
+    messageTexts.forEach(text => {
+      text.classList.add('orange-support'); // Alle Nachrichten (Bot und Benutzer)
+    });
+    
+    botAvatars.forEach(avatar => {
+      avatar.classList.add('orange-support');
+    });
+    
+    // Füge orange Klassen zu Quick Topic Buttons hinzu
+    quickTopicBtns.forEach(btn => {
+      btn.classList.add('orange-support');
+    });
+    
+    // Füge orange Klassen zu Hilfe-Themen-Buttons hinzu
+    hilfeThemaBtns.forEach(btn => {
+      btn.classList.add('orange-support');
+    });
+    
+    // Setze einen Flag, damit neue Nachrichten automatisch orange werden
+    window.orangeSupportActive = true;
+  }
+  
+  function deactivateOrangeSupport() {
+    // Entferne orange Klassen von den relevanten Elementen
+    const hilfePanelHeader = document.getElementById('hilfePanelHeader');
+    const chatbotHeader = document.querySelector('.chatbot-header');
+    const messageTexts = document.querySelectorAll('.message-text');
+    const botAvatars = document.querySelectorAll('.bot-avatar');
+    const quickTopicBtns = document.querySelectorAll('.quick-topic-btn');
+    const hilfeThemaBtns = document.querySelectorAll('.hilfe-thema-btn');
+    
+    if (hilfePanelHeader) {
+      hilfePanelHeader.classList.remove('orange-support');
+    }
+    if (chatbotHeader) {
+      chatbotHeader.classList.remove('orange-support');
+    }
+    
+    messageTexts.forEach(text => {
+      text.classList.remove('orange-support');
+    });
+    
+    botAvatars.forEach(avatar => {
+      avatar.classList.remove('orange-support');
+    });
+    
+    quickTopicBtns.forEach(btn => {
+      btn.classList.remove('orange-support');
+    });
+    
+    hilfeThemaBtns.forEach(btn => {
+      btn.classList.remove('orange-support');
+    });
+    
+    // Entferne den Flag
+    window.orangeSupportActive = false;
+  }
+  
+  // Event Listeners für X-Button
+  if (hilfePanelClose) {
+    hilfePanelClose.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+      console.log('X-Button geklickt - Panel wird geschlossen');
+      
+      // Sofort schließen ohne Animation
+      hilfePanel.classList.remove('offen');
+      document.body.classList.remove('help-panel-open');
+      hilfePanel.style.display = 'none';
+      
+      // Restore body styles (especially important for mobile)
+      document.body.style.overflow = '';
+      document.body.style.height = '';
+      
+      hideChatbot();
+      console.log('Panel sofort geschlossen');
+    });
+  }
+  
+  // Back button im Chatbot
+  if (backButton) {
+    backButton.addEventListener('click', () => {
+      hideChatbot();
+    });
+  }
+  
+  // Hilfe-Themen Buttons
+  document.querySelectorAll('.hilfe-thema-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const topic = btn.getAttribute('data-topic');
+      
+      // Spezielle Behandlung für Keyboard Shortcuts
+      if (topic === 'shortcuts') {
+        // Schließe das Hilfe-Panel zuerst
+        hilfePanel.classList.remove('offen');
+        document.body.classList.remove('help-panel-open');
+        hilfePanel.style.display = 'none';
+        document.body.style.overflow = '';
+        document.body.style.height = '';
+        hideChatbot();
+        
+        // Öffne das große Keyboard Shortcuts Modal nach kurzer Verzögerung
+        setTimeout(() => {
+          if (window.keyboardShortcuts) {
+            window.keyboardShortcuts.showHelpModal();
+          }
+        }, 200);
+        return; // Beende hier, öffne nicht den Chat
+      }
+      
+      // Für alle anderen Themen: normaler Chat-Ablauf
+      // Aktiviere orange Farben sofort beim Klick
+      activateOrangeSupport();
+      showChatbot();
+      setTimeout(() => {
+        handleTopicClick(topic);
+      }, 300);
+    });
+  });
+  
+  // Quick topic buttons (werden dynamisch erstellt)
+  document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('quick-topic-btn')) {
+      const topic = e.target.getAttribute('data-topic');
+      // Aktiviere orange Support-Farben für Quick Topic Buttons
+      activateOrangeSupport();
+      handleTopicClick(topic);
+    }
+  });
+  
+  // Schließe das Panel beim Klick außerhalb
+  document.addEventListener('mousedown', function(event) {
+    if (
+      hilfePanel.classList.contains('offen') &&
+      !hilfePanel.contains(event.target) &&
+      !hilfeButton.contains(event.target) &&
+      !event.target.closest('#hilfePanelClose')
+    ) {
+      console.log('Klick außerhalb - Panel wird geschlossen');
+      hilfePanel.classList.remove('offen');
+      document.body.classList.remove('help-panel-open');
+      hilfePanel.style.display = 'none';
+      hideChatbot();
+    }
+  });
+  
+  console.log('Script geladen!');
+</script>
+<script src="keyboard-shortcuts.js" defer></script>
+</body>
+</html>
